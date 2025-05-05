@@ -1,0 +1,11 @@
+service: slack_events
+runtime: python312
+entrypoint: uvicorn --port $PORT --reload main:app
+env_variables:
+  PUBSUB_TOPIC: slack_events_message
+  GOOGLE_CLOUD_PROJECT: <your-project-id>
+handlers:
+- url: /.*
+  script: auto
+  secure: always
+  redirect_http_response_code: 301
