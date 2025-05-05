@@ -1,7 +1,6 @@
 import json
 import logging
 import os
-from typing import Dict, Any
 
 from fastapi import FastAPI, Request, BackgroundTasks
 from fastapi.responses import JSONResponse
@@ -28,7 +27,7 @@ def push_pubsub(project: str, topic: str, data: dict) -> None:
         publish_future=publisher.publish(path, data=json_string.encode())
         message_id = publish_future.result()
     except Exception as e:
-        logger.error(f"Failed to publish message: {e}", exc_info=True)
+        logger.error(f"Failed to publish message of ID {message_id}: {e}", exc_info=True)
 
 @app.post("/messages")
 async def slack_events(request: Request, background_tasks: BackgroundTasks):
