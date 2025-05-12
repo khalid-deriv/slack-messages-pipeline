@@ -3,7 +3,7 @@
 Make sure you have the gcloud CLI installed, if not download it from [here](https://cloud.google.com/sdk/docs/install)
 Deploy by running:
 ```sh
-cd app_negine
+cd app_engine
 gcloud app deploy
 ```
 
